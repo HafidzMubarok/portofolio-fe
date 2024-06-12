@@ -2,9 +2,11 @@
   <div class="sticky top-0 w-full bg-gradient-to-r from-sky-600 to-primary z-10">
     <nav>
       <div class="flex flex-col font-semibold space-y-4 text-light text-2xl py-3 md:justify-center md:text-base md:px-6">
-        <button data-collapse-toggle="navbar-default" type="button" class="px-6 text-end sm:flex sm:flex-row sm:justify-end md:hidden" aria-controls="navbar-default" aria-expanded="false">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="px-6 sm:flex sm:flex-row sm:justify-end md:hidden">
+          <button data-collapse-toggle="navbar-default" type="button" class="text-end" aria-controls="navbar-default" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
         <div class="hidden md:contents uppercase" id="navbar-default">
           <ul class="flex flex-col w-full space-y-8 py-8 absolute text-center bg-primary md:flex md:flex-row md:justify-center md:sticky md:items-center md:space-x-8 md:space-y-0 md:py-0 md:bg-inherit lg:space-x-16">
             <li><a href="#about-me" :class="{ active: 'about-me' == props.section.currentSection }">About Me</a></li>
