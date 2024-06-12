@@ -6,26 +6,23 @@
         </div>
         <div class="px-10 pb-8 text-left lg:pt-6 lg:px-32">
             <swiper
-                :enabled="false"
-                :direction="'vertical'"
                 :slides-per-view="'auto'"
-                :space-between="16"
+                :space-between="32"
                 :pagination="{
                     clickable: true,
                 }"
                 :navigation="true"
+                :loop="true"
                 :breakpoints="{
                     '768': {
                         slidesPerView: 'auto',
                         spaceBetween: 10,
-                        enabled: true,
-                        direction: 'horizontal',
+                        loop: true,
                     },
                     '976': {
                         slidesPerView: articleView,
                         spaceBetween: 32,
-                        enabled: true,
-                        direction: 'horizontal',
+                        loop: false,
                     },
                 }"
                 :modules="modules"
@@ -42,11 +39,11 @@
                     </Card>
                 </swiper-slide>
             </swiper>
-            <div class="flex flex-col pb-8 md:hidden">
+            <!-- <div class="flex flex-col pb-8 md:hidden">
                 <a href="#" class="p-3 font-bold text-center bg-primary text-light rounded-lg uppercase">
                     Show More Article
                     <i class="fa-solid fa-chevron-down"></i></a>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
