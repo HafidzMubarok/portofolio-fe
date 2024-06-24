@@ -9,7 +9,7 @@
             <Card v-for="work in workHistories" :data-collapse-target="'detail-history-card-'+work._id" :controls="'detail-history-card-'+work._id" btnCollapse>
                 <h5 class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
                 <p class="text-base">{{ work.position }}</p>
-                <p class="font-light text-sm">{{ work.entry_date }} - {{ work.out_date }}</p>
+                <p class="font-light text-sm">{{ formatDate(work.entry_date) }} - {{ formatDate(work.out_date) }}</p>
                 <p class="mb-4 text-base hidden" :id="'detail-history-card-'+work._id">
                     {{ work.description }}
                 </p>
@@ -50,7 +50,7 @@
                     <Card :data-collapse-target="'detail-projec-card-'+project._id" :controls="'detail-projec-card-'+project._id" btnCollapse>
                         <h5 v-if="project.title" class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
                         <p v-if="project.subtitle" class="text-base">{{ project.subtitle }}</p>
-                        <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ project.start_date }} - {{ project.end_date }}</p>
+                        <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}</p>
                         <p v-if="project.description" class="mb-4 text-base hidden" :id="'detail-projec-card-'+project._id">
                             {{ project.description }}
                         </p>
@@ -116,7 +116,7 @@ export default {
         const fetchProjects = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/projects');
-                console.log(response.data);
+
                 if (response && response.data) {
                     projects.value = response.data
                 } else {
@@ -131,6 +131,20 @@ export default {
             fetchWorkHistories();
             fetchProjects();
         });
+
+        function formatDate(dateString) {
+            let date, month, year, newDate;
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            date = new Date(dateString);
+
+            month = date.getMonth();
+            year = new String(date.getFullYear());
+
+            newDate = months[month] + ' ' + year;
+
+            return newDate;
+        }
         
         return {
             modules: [Pagination, Navigation],
@@ -165,7 +179,8 @@ export default {
                     date: "November 2022 - July 2023",
                     detail: "Involved in the development of employee data management web applications, such as the creation of features based on CRUD based features with Laravel and PostgreSQL technology."
                 },
-            ]
+            ],
+            formatDate,
         };
     },
     computed: {
