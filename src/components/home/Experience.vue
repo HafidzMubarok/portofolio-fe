@@ -46,7 +46,17 @@
                 :modules="modules"
                 class="mySwiper"
                 >
-                <swiper-slide v-for="project in projectData">
+                <swiper-slide v-if="projects" v-for="project in projects">
+                    <Card :data-collapse-target="'detail-projec-card-'+project._id" :controls="'detail-projec-card-'+project._id" btnCollapse>
+                        <h5 v-if="project.title" class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
+                        <p v-if="project.subtitle" class="text-base">{{ project.subtitle }}</p>
+                        <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ project.start_date }} - {{ project.end_date }}</p>
+                        <p v-if="project.description" class="mb-4 text-base hidden" :id="'detail-projec-card-'+project._id">
+                            {{ project.description }}
+                        </p>
+                    </Card>
+                </swiper-slide>
+                <swiper-slide v-else v-for="project in projectData">
                     <Card :data-collapse-target="'detail-projec-card-'+project.id" :controls="'detail-projec-card-'+project.id" btnCollapse>
                         <h5 class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
                         <p class="text-base">{{ project.subTitle }}</p>
@@ -87,11 +97,12 @@ export default {
     },
     setup() {
         const workHistories = ref([]);
+        const projects = ref([]);
 
         const fetchWorkHistories = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/works');
-                console.log(response.data);
+
                 if (response && response.data) {
                     workHistories.value = response.data
                 } else {
@@ -102,13 +113,29 @@ export default {
             }
         }
 
+        const fetchProjects = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/projects');
+                console.log(response.data);
+                if (response && response.data) {
+                    projects.value = response.data
+                } else {
+                    throw new Error('Struktur data tidak sesuai');
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
         onMounted(() => {
             fetchWorkHistories();
+            fetchProjects();
         });
         
         return {
             modules: [Pagination, Navigation],
             workHistories,
+            projects,
             projectData: [
                 {
                     id: 1,
