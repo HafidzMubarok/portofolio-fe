@@ -7,23 +7,31 @@
         <form @submit.prevent="handleSubmit">
             <div class="flex flex-col px-6 space-y-6 pb-6 md:px-10 lg:px-40">
                 <div class="space-y-6 md:flex md:flex-row md:space-x-4 md:space-y-0 lg:space-x-8">
-                    <div class="space-y-2 md:w-1/2">
-                        <span class="font-semibold text-light">First Name</span>
-                        <input id="firstName" v-model="firstName" class="rounded-lg p-3 border-0 outline-0 focus:ring-2 focus:ring-secondary ring-inset w-full text-primary" />
-                    </div>
-                    <div class="space-y-2 md:w-1/2">
-                        <span class="font-semibold text-light">Last Name</span>
-                        <input id="lastName" v-model="lastName" class="rounded-lg p-3 border-0 outline-0 focus:ring-2 focus:ring-secondary ring-inset w-full text-primary" />
-                    </div>
+                    <Input 
+                        input-id="firstName" 
+                        :input-model="firstName"
+                        @update:input-model="$event => (firstName = $event)"
+                        class="font-semibold text-light md:w-1/2">
+                        First Name
+                    </Input>
+                    <Input 
+                        input-id="lastName" 
+                        :input-model="lastName"
+                        @update:input-model="$event => (lastName = $event)"
+                        class="font-semibold text-light md:w-1/2">
+                        Last Name
+                    </Input>
                 </div>
-                <div class="space-y-2">
-                    <span class="font-semibold text-light">Email</span>
-                    <input id="email" v-model="email" class="rounded-lg p-3 border-0 outline-0 focus:ring-2 focus:ring-secondary ring-inset w-full text-primary" />
-                </div>
-                <div class="space-y-2">
-                    <span class="font-semibold text-light">Your Feedback</span>
-                    <input id="feedback" v-model="feedback" class="rounded-lg p-3 border-0 outline-0 focus:ring-2 focus:ring-secondary ring-inset w-full text-primary" />
-                </div>
+                <Input 
+                    input-id="email" 
+                    :input-model="email"
+                    @update:input-model="$event => (email = $event)"
+                    class="font-semibold text-light">Email</Input>
+                <Input 
+                    input-id="feedback" 
+                    :input-model="feedback"
+                    @update:input-model="$event => (feedback = $event)"
+                    class="font-semibold text-light">Your Feedback</Input>
                 <button type="submit" class="text-base font-semibold text-light bg-secondary rounded-md py-3 px-8 hover:shadow-lg hover:opacity-80">
                     Send Your Feedback
                 </button>
