@@ -32,7 +32,7 @@
                     :input-model="feedback"
                     @update:input-model="$event => (feedback = $event)"
                     class="font-semibold text-light">Your Feedback</Input>
-                <Button btn-text="Send Your Feedback" btnSubmit />
+                <Button btn-text="Send Your Feedback" :loading="loading" :success="success" btnSubmit />
             </div>
         </form>
     </section>
@@ -48,18 +48,34 @@ const firstName = ref('');
 const lastName = ref('');
 const email = ref('');
 const feedback = ref('');
+const loading = ref(false);
+const success = ref(false);
+const failed = ref(false);
 
 const handleSubmit = async () => {
     try {
+        loading.value = true;
         const response = await axios.post('http://localhost:3000/api/feedback', {
             firstName: firstName.value,
             lastName: lastName.value,
             email: email.value,
             feedback: feedback.value,
         });
-
+        
         if (response.status == 200) {
             console.log(response);
+            loading.value = false;
+            success.value = true;
+            setTimeout(() => {
+                success.value = false;
+                firstName.value = '';
+                lastName.value = '';
+                email.value = '';
+                feedback.value = '';
+                // location.reload();
+            }, 1000); // Success animation
+            
+
         } else {
             console.log(response);
         }
