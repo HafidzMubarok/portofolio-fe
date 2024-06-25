@@ -18,23 +18,43 @@
                 </div>
                 <div class="space-y-6 lg:mx-auto lg:pb-4 lg:basis-1/2">
                     <img src="/img/profile-pic-2.png" alt="Profile Pic" class="max-w-full mx-auto px-16 md:max-w-96 md:ps-0 lg:px-8">
-                    <div class="space-x-6 text-light text-center">
-                            <a v-if="profile.email" href="#">
-                                <i class="fa-solid fa-envelope fa-xl"></i>
-                            </a>
-                            <a v-if="profile.whatsapp" href="#">
-                                <i class="fa-brands fa-whatsapp fa-xl"></i>
-                            </a>
-                            <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank">
-                                <i class="fa-brands fa-linkedin fa-xl"></i>
-                            </a>
-                            <a v-if="profile.github" :href="profile.github" target="_blank">
-                                <i class="fa-brands fa-github fa-xl"></i>
-                            </a>
-                            <a v-if="profile.instagram" :href="profile.instagram" target="_blank">
-                                <i class="fa-brands fa-instagram fa-xl"></i>
-                            </a>
-                        </div>
+                    <div class="text-light text-center">
+                        <a v-if="profile.email" href="#"
+                        class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            @mouseover="email = true"
+                            @mouseleave="email = false">
+                            <i class="fa-solid fa-envelope fa-xl"></i>
+                            <span v-show="email == true" class="ms-2">{{ profile.email }}</span>
+                        </a>
+                        <a v-if="profile.whatsapp" href="#"
+                        class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            @mouseover="whatsapp = true"
+                            @mouseleave="whatsapp = false">
+                            <i class="fa-brands fa-whatsapp fa-xl"></i>
+                            <span v-show="whatsapp" class="ms-2">{{ profile.whatsapp }}</span>
+                        </a>
+                        <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank"
+                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            @mouseover="linkedin = true"
+                            @mouseleave="linkedin = false">
+                            <i class="fa-brands fa-linkedin fa-xl"></i>
+                            <span v-show="linkedin" class="ms-2">{{ profile.linkedin }}</span>
+                        </a>
+                        <a v-if="profile.github" :href="profile.github" target="_blank"
+                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            @mouseover="github = true"
+                            @mouseleave="github = false">
+                            <i class="fa-brands fa-github fa-xl"></i>
+                            <span v-show="github" class="ms-2">{{ profile.github }}</span>
+                        </a>
+                        <a v-if="profile.instagram" :href="profile.instagram" target="_blank" 
+                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            @mouseover="instagram = true"
+                            @mouseleave="instagram = false">
+                            <i class="fa-brands fa-instagram fa-xl"></i>
+                            <span v-show="instagram" class="ms-2">{{ profile.instagram }}</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,6 +66,11 @@ import { ref, onMounted } from "vue";
 import axios from 'axios';
 
 const profile = ref([]);
+const email = ref(false);
+const whatsapp = ref(false);
+const linkedin = ref(false);
+const github = ref(false);
+const instagram = ref(false);
 
 const fetchProfiles = async () => {
     try {
@@ -67,3 +92,7 @@ onMounted(() => {
 });
 
 </script>
+
+<style scoped>
+
+</style>
