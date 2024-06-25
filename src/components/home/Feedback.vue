@@ -32,9 +32,7 @@
                     :input-model="feedback"
                     @update:input-model="$event => (feedback = $event)"
                     class="font-semibold text-light">Your Feedback</Input>
-                <button type="submit" class="text-base font-semibold text-light bg-secondary rounded-md py-3 px-8 hover:shadow-lg hover:opacity-80">
-                    Send Your Feedback
-                </button>
+                <Button btn-text="Send Your Feedback" btnSubmit />
             </div>
         </form>
     </section>
