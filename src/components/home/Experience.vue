@@ -6,13 +6,16 @@
         </div>
         <div
             class="flex flex-col px-6 pb-8 space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
-            <Card v-for="(work, index) in workHistories" 
+            <Card v-if="workHistories" v-for="(work, index) in workHistories" 
             :data-collapse-target="'detail-history-card-'+index" :controls="'detail-history-card-'+index" 
             :btn-disable="!work.description" btnCollapse>
-                <h5 class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
-                <p class="text-base">{{ work.position }}</p>
-                <p class="font-light text-sm">{{ formatDate(work.entry_date) }} - {{ formatDate(work.out_date) }}</p>
-                <p class="mb-4 text-base hidden" :id="'detail-history-card-'+index">
+                <h5 v-if="work.company" class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
+                <p v-if="work.position" class="text-base">{{ work.position }}</p>
+                <p v-if="work.entry_date || work.out_date" class="font-light text-sm">
+                    <span v-if="work.entry_date">{{ formatDate(work.entry_date) }}</span> - <span v-if="work.out_date">{{ formatDate(work.out_date) }}</span>
+                    <span v-else>Now</span>
+                </p>
+                <p v-if="work.description" class="mb-4 text-base hidden" :id="'detail-history-card-'+index">
                     {{ work.description }}
                 </p>
             </Card>
@@ -53,7 +56,10 @@
                     :btn-disable="!project.description" btnCollapse>
                         <h5 v-if="project.title" class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
                         <p v-if="project.subtitle" class="text-base">{{ project.subtitle }}</p>
-                        <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}</p>
+                        <p v-if="project.start_date || project.end_date" class="font-light text-sm">
+                            <span v-if="project.start_date">{{ formatDate(project.start_date) }}</span> - <span v-if="project.end_date">{{ formatDate(project.end_date) }}</span>
+                            <span v-else>Not finished yet</span>
+                        </p>
                         <p v-if="project.description" class="mb-4 text-base hidden" :id="'detail-projec-card-'+index">
                             {{ project.description }}
                         </p>
