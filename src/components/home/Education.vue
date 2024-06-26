@@ -8,7 +8,9 @@
                 <img src="/img/education-logo.svg" alt="education logo" class="max-w-20 pb-4">
                 <h5 v-if="education.institution" class="text-primary text-xl font-bold leading-tight mb-5">{{ education.institution }}</h5>
                 <p v-if="education.qualification" class="text-base">{{ education.qualification }}</p>
-                <p v-if="education.start_date || education.end_date" class="font-light text-sm">{{ formatDate(education.start_date) }} - {{ formatDate(education.end_date) }}</p>
+                <p v-if="education.start_date || education.end_date" class="font-light text-sm">
+                    <span v-if="education.start_date">{{ formatDate(education.start_date) }}</span> - <span v-if="education.end_date">{{ formatDate(education.end_date) }}</span><span v-else>Now</span>
+                </p>
                 <p v-if="education.description" class="mb-4 text-base hidden" :id="'detail-education-card-'+index">
                     {{ education.description }}
                 </p>
