@@ -4,7 +4,9 @@
             <h1 class="text-primary font-bold text-2xl lg:text-3xl">My Education</h1>
         </div>
         <div class="flex flex-col px-6 pb-8 space-y-4 text-left lg:px-32 lg:pt-6">
-            <Card v-if="educations" v-for="(education, index) in educations" class="md:max-w-full lg:max-w-full" :data-collapse-target="'detail-education-card-'+index" :controls="'detail-education-card-'+index" btnCollapse>
+            <Card v-if="educations" v-for="(education, index) in educations" 
+            class="md:max-w-full lg:max-w-full" :data-collapse-target="'detail-education-card-'+index" :controls="'detail-education-card-'+index" 
+            :btn-disable="!education.description" btnCollapse>
                 <img src="/img/education-logo.svg" alt="education logo" class="max-w-20 pb-4">
                 <h5 v-if="education.institution" class="text-primary text-xl font-bold leading-tight mb-5">{{ education.institution }}</h5>
                 <p v-if="education.qualification" class="text-base">{{ education.qualification }}</p>
