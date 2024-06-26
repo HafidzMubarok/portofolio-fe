@@ -2,19 +2,21 @@
     <div
         class="block rounded-lg bg-white p-12 text-surface shadow-secondary-1 text-primary space-y-4 md:max-w-xs md:w-full md:h-fit lg:max-w-md">
         <slot></slot>
-        <button v-if="btnCollapse" type="button" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 w-max text-xs font-medium uppercase leading-normal 
-                text-light shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 
-                focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 
-                active:shadow-primary-2" data-twe-ripple-init data-twe-ripple-color="light"
-                :data-collapse-toggle="props.dataCollapseTarget" :aria-controls="props.controls" aria-expanded="false">
-            {{ setBtnText }}
-        </button>
-        <button v-else type="button" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 w-max text-xs font-medium uppercase leading-normal 
-                text-light shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 
-                focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 
-                active:shadow-primary-2" data-twe-ripple-init data-twe-ripple-color="light">
-            {{ btnText }}
-        </button>
+        <div v-if="!btnDisable">
+            <button v-if="btnCollapse" type="button" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 w-max text-xs font-medium uppercase leading-normal 
+                    text-light shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 
+                    focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 
+                    active:shadow-primary-2" data-twe-ripple-init data-twe-ripple-color="light"
+                    :data-collapse-toggle="props.dataCollapseTarget" :aria-controls="props.controls" aria-expanded="false">
+                {{ setBtnText }}
+            </button>
+            <button v-else type="button" class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 w-max text-xs font-medium uppercase leading-normal 
+                    text-light shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 
+                    focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 
+                    active:shadow-primary-2" data-twe-ripple-init data-twe-ripple-color="light">
+                {{ btnText }}
+            </button>
+        </div>
     </div>
 </template>
 
@@ -25,6 +27,7 @@ const props = defineProps({
     dataCollapseTarget: String,
     controls: String,
     btnText: String,
+    btnDisable: Boolean,
     btnCollapse: Boolean,
 });
 
