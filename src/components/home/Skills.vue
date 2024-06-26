@@ -7,9 +7,9 @@
             <Card v-if="skills" v-for="(skill, index) in skills" 
             class="lg:max-w-xs" :data-collapse-target="'detail-skill-card-'+index" :controls="'detail-skill-card-'+index" 
             :btn-disable="!skill.description" btnCollapse>
-                <i class="fa-brands text-7xl" :class="'fa-'+skill.icon"></i>
-                <h5 class="text-primary text-xl font-bold leading-tight mb-5">{{ skill.name }}</h5>
-                <p class="mb-4 text-base hidden" :id="'detail-skill-card-'+index">
+                <i v-if="skill.icon" class="fa-brands text-7xl" :class="'fa-'+skill.icon"></i>
+                <h5 v-if="skill.name" class="text-primary text-xl font-bold leading-tight mb-5">{{ skill.name }}</h5>
+                <p v-if="skill.description" class="mb-4 text-base hidden" :id="'detail-skill-card-'+index">
                     {{ skill.description }}
                 </p>
             </Card>
