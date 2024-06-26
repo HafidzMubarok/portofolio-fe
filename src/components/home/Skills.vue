@@ -4,7 +4,9 @@
             <h1 class="text-light font-bold text-2xl lg:text-3xl">Technology That I Usually Use</h1>
         </div>
         <div class="flex flex-col px-6 pb-8 space-y-4 md:items-center text-center lg:px-0 lg:flex-row lg:flex-wrap lg:space-x-4 lg:space-y-0 lg:justify-center">
-            <Card v-if="skills" v-for="(skill, index) in skills" class="lg:max-w-xs" :data-collapse-target="'detail-skill-card-'+index" :controls="'detail-skill-card-'+index" btnCollapse>
+            <Card v-if="skills" v-for="(skill, index) in skills" 
+            class="lg:max-w-xs" :data-collapse-target="'detail-skill-card-'+index" :controls="'detail-skill-card-'+index" 
+            :btn-disable="!skill.description" btnCollapse>
                 <i class="fa-brands text-7xl" :class="'fa-'+skill.icon"></i>
                 <h5 class="text-primary text-xl font-bold leading-tight mb-5">{{ skill.name }}</h5>
                 <p class="mb-4 text-base hidden" :id="'detail-skill-card-'+index">

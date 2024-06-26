@@ -6,7 +6,9 @@
         </div>
         <div
             class="flex flex-col px-6 pb-8 space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
-            <Card v-for="(work, index) in workHistories" :data-collapse-target="'detail-history-card-'+index" :controls="'detail-history-card-'+index" btnCollapse>
+            <Card v-for="(work, index) in workHistories" 
+            :data-collapse-target="'detail-history-card-'+index" :controls="'detail-history-card-'+index" 
+            :btn-disable="!work.description" btnCollapse>
                 <h5 class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
                 <p class="text-base">{{ work.position }}</p>
                 <p class="font-light text-sm">{{ formatDate(work.entry_date) }} - {{ formatDate(work.out_date) }}</p>
@@ -47,7 +49,8 @@
                 class="mySwiper"
                 >
                 <swiper-slide v-if="projects" v-for="(project, index) in projects">
-                    <Card :data-collapse-target="'detail-projec-card-'+index" :controls="'detail-projec-card-'+index" btnCollapse>
+                    <Card :data-collapse-target="'detail-projec-card-'+index" :controls="'detail-projec-card-'+index" 
+                    :btn-disable="!project.description" btnCollapse>
                         <h5 v-if="project.title" class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
                         <p v-if="project.subtitle" class="text-base">{{ project.subtitle }}</p>
                         <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}</p>
