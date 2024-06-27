@@ -31,7 +31,17 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide v-for="article in articleDatas" :key="article.id" class="py-2 px-2">
+                <swiper-slide v-if="articles" v-for="article in articles" :key="article._id" class="py-2 px-2">
+                    <Card class="drop-shadow-lg" btn-text="Read More">
+                        <img src="/img/education-logo.svg" alt="education logo" class="max-h-40 w-screen pb-4">
+                        <p v-if="article.created_at" class="text-base text-end">{{ formatDate(article.created_at) }}</p>
+                        <h5 v-if="article.title" class="text-primary text-xl font-bold leading-tight mb-5">{{ article.title }}</h5>
+                        <p v-if="article.content" class="mb-4 text-base truncate">
+                            {{ article.content }}
+                        </p>
+                    </Card>
+                </swiper-slide>
+                <swiper-slide v-else v-for="article in articleDatas" :key="article.id" class="py-2 px-2">
                     <Card class="drop-shadow-lg" btn-text="Read More">
                         <img src="/img/education-logo.svg" alt="education logo" class="max-h-40 w-screen pb-4">
                         <p v-if="article.date" class="text-base text-end">{{ article.date }}</p>
@@ -55,6 +65,9 @@
 import Card from '../Card.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination } from 'swiper/modules';
+import { onMounted, ref } from "vue";
+
+import axios from 'axios';
 
 import 'swiper/css';
 
@@ -68,8 +81,45 @@ export default {
         SwiperSlide,
     },
     setup() {
+        const articles = ref([]);
+
+        const fetchArticles = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/article/all');
+
+                if (response && response.data) {
+                    articles.value = response.data;
+                    console.log(articles.value);
+                } else {
+                    throw new Error('Struktur data tidak sesuai');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        onMounted(() => {
+            fetchArticles()
+        });
+
+        function formatDate(dateString) {
+            let day, date, month, year, newDate;
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            date = new Date(dateString);
+
+            day = date.getDate();
+            month = date.getMonth();
+            year = new String(date.getFullYear());
+
+            newDate = day + ' ' + months[month] + ' ' + year;
+
+            return newDate;
+        }
       return {
         modules: [Pagination, Navigation],
+        articles,
+        formatDate,
         articleDatas: [
             {
                 id: 1,
