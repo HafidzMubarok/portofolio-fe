@@ -4,7 +4,7 @@
             <h1 class="text-primary font-bold text-2xl lg:text-3xl">My Education</h1>
         </div>
         <div class="flex flex-col px-6 pb-8 space-y-4 text-left lg:px-32 lg:pt-6">
-            <Card v-if="educations" v-for="(education, index) in educations" 
+            <Card v-if="educations.length != 0" v-for="(education, index) in educations" 
             class="md:max-w-full lg:max-w-full" :data-collapse-target="'detail-education-card-'+index" :controls="'detail-education-card-'+index" 
             :btn-disable="!education.description" btnCollapse>
                 <img src="/img/education-logo.svg" alt="education logo" class="max-w-20 pb-4">
@@ -17,6 +17,9 @@
                     {{ education.description }}
                 </p>
             </Card>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-primary text-center opacity-70 font-bold text-2xl lg:text-3xl">Education not yet added</h1>
+            </div>
         </div>
     </section>
 </template>

@@ -5,11 +5,9 @@
             <p v-if="profile.about_me" class="lg:text-lg text-light">
                 {{ profile.about_me }}
             </p>
-            <p v-else class="lg:text-lg text-light">
-                As a graduate of <strong>Bandung State Polytechnic with a Bachelor's degree in Computer Applied Sciences</strong>, I have immersed myself in an academic environment that demands rapid and continuous learning. This experience has shaped my ability to adapt and grow, both in team settings and independently.
-                <br><br>
-                I have a strong interest in <strong>software development</strong>, particularly in <strong>web development</strong>. My belief in continuous learning and technology exploration has guided me to engage in various software development projects, both professionally and personally.
-            </p>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-light text-center opacity-70 font-bold text-2xl lg:text-3xl">About me not yet added</h1>
+            </div>
         </div>
     </section>
 </template>

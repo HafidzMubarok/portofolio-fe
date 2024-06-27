@@ -6,7 +6,7 @@
         </div>
         <div
             class="flex flex-col px-6 pb-8 space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
-            <Card v-if="workHistories" v-for="(work, index) in workHistories" 
+            <Card v-if="workHistories && workHistories.length != 0" v-for="(work, index) in workHistories" 
             :data-collapse-target="'detail-history-card-'+index" :controls="'detail-history-card-'+index" 
             :btn-disable="!work.description" btnCollapse>
                 <h5 v-if="work.company" class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
@@ -19,12 +19,16 @@
                     {{ work.description }}
                 </p>
             </Card>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-primary text-center opacity-70 font-bold text-2xl lg:text-3xl">Job history not yet added</h1>
+            </div>
         </div>
         <div class="px-10 pb-8 text-center space-y-4">
             <p class="text-primary text-base md:text-lg lg:text-xl">Project</p>
         </div>
         <div class="px-6 md:px-24 lg:px-12">
             <swiper
+                v-if="projects && projects.length != 0"
                 :enabled="false"
                 :direction="'vertical'"
                 :slides-per-view="'auto'"
@@ -76,6 +80,9 @@
                     </Card>
                 </swiper-slide>
             </swiper>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-primary text-center opacity-70 font-bold text-2xl lg:text-3xl">Project not yet added</h1>
+            </div>
             <div
                 class="flex flex-col pb-8 md:hidden">
                 <a href="#" class="p-3 font-semibold text-center bg-primary text-light rounded-lg uppercase">
