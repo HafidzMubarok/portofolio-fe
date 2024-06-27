@@ -38,7 +38,6 @@ const fetchEducations = async () => {
 
         if (response && response.data) {
             educations.value = response.data;
-            console.log(educations.value);
         } else {
             throw new Error('Struktur data tidak sesuai');
         }

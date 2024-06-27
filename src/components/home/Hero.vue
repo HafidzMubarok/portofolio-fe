@@ -55,7 +55,6 @@ const fetchProfiles = async () => {
 
         if (response && response.data) {
             profile.value = response.data[0];
-            console.log(profile.value);
         } else {
             throw new Error('Struktur data tidak sesuai');
         }

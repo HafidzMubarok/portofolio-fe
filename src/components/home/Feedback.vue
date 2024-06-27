@@ -63,7 +63,6 @@ const handleSubmit = async () => {
         });
         
         if (response.status == 200) {
-            console.log(response);
             loading.value = false;
             success.value = true;
             setTimeout(() => {

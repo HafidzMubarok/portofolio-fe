@@ -43,7 +43,6 @@ export default {
                 
                 if (response && response.data) {
                     skills.value = response.data;
-                    console.log(skills.value);
                 } else {
                     throw new Error('Struktur data tidak sesuai');
                 }
