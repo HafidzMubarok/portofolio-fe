@@ -117,7 +117,7 @@ export default {
     },
     computed: {
         articleView() {
-            return this.articleDatas.length >= 2 ? 2 : 1;
+            return this.articles.length >= 2 ? 2 : 1;
         }
     },
 };
