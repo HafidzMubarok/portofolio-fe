@@ -2,8 +2,8 @@
   <div class="absolute z-10 top-0 w-full bg-transparent" :class="{ 'sticky': 'home' != props.section.currentSection }">
     <nav>
       <div class="flex flex-col font-semibold space-y-4 text-light text-2xl py-3 md:pb-0 md:pt-8 md:justify-center md:text-base md:px-6"
-      :class="{ 'bg-primary md:pt-2': 'home' != props.section.currentSection }">
-        <button data-collapse-toggle="navbar-default" type="button" class="px-6 text-end sm:flex sm:flex-row sm:justify-end md:hidden" aria-controls="navbar-default" aria-expanded="false">
+      :class="{ 'bg-primary md:pt-2': 'home' != props.section.currentSection, 'bg-primary': !isHidden }">
+        <button data-collapse-toggle="navbar-default" type="button" class="px-6 text-end sm:flex sm:flex-row sm:justify-end md:hidden" aria-controls="navbar-default" aria-expanded="false" id="menu-btn">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="hidden md:contents uppercase" id="navbar-default">
@@ -47,16 +47,42 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { initFlowbite } from 'flowbite'
 
 const props = defineProps({
   section: Object,
 });
 
+const dataCollapseTarget = ref('navbar-default');
+const isHidden = ref(false);
+const observer = ref(null);
+
+const checkHiddenClass = () => {
+    const targetElement = document.getElementById(dataCollapseTarget.value);
+    if (targetElement) {
+        isHidden.value = targetElement.classList.contains('hidden');
+    }
+}
+
+const observeTargetElement = () => {
+    const targetObserver = document.getElementById(dataCollapseTarget.value);
+    if (targetObserver) {
+        observer.value = new MutationObserver(() => {
+            checkHiddenClass();
+        });
+        observer.value.observe(targetObserver, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+    }
+}
+
 // initialize components based on data attribute selectors
 onMounted(() => {
   initFlowbite();
+  checkHiddenClass();
+  observeTargetElement();
 })
 </script>
 
