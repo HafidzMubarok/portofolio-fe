@@ -9,27 +9,27 @@
         <div class="hidden md:contents uppercase" id="navbar-default">
           <ul class="flex flex-col w-full py-8 absolute text-center bg-primary md:flex md:flex-row md:justify-center md:align-middle md:sticky md:items-center md:space-x-4 md:pt-1 md:pb-0 md:bg-inherit lg:space-x-8">
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'about-me' == props.section.currentSection }">
-              <a href="#about-me" @click="collapse.collapse()">
+              <a href="#about-me" class="py-6" @click="collapse.collapse()">
                 About Me
               </a>
             </li>
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'history' == props.section.currentSection }">
-              <a href="#history" @click="collapse.collapse()">
+              <a href="#history" class="py-6" @click="collapse.collapse()">
                 History
               </a>
             </li>
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'technology' == props.section.currentSection }">
-              <a href="#technology" @click="collapse.collapse()">
+              <a href="#technology" class="py-6" @click="collapse.collapse()">
                 Technology
               </a>
             </li>
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'education' == props.section.currentSection }">
-              <a href="#education" @click="collapse.collapse()">
+              <a href="#education" class="py-6" @click="collapse.collapse()">
                 Education
               </a>
             </li>
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'article' == props.section.currentSection }">
-              <a href="#article" @click="collapse.collapse()">
+              <a href="#article" class="py-6" @click="collapse.collapse()">
                 Article
               </a>
             </li>
