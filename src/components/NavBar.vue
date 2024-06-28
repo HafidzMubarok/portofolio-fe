@@ -66,15 +66,12 @@ const collapseTargetElement = () => {
   const options = {
     onCollapse: () => {
       isHidden.value = true;
-      console.log(isHidden.value);
     },
     onExpand: () => {
       isHidden.value = false;
-      console.log(isHidden.value);
     },
     onToggle: () => {
-      
-      console.log('element has been toggled');
+      //
     },
   };
 
