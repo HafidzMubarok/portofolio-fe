@@ -1,11 +1,13 @@
 <template>
     <section id="home" class="px-12 bg-gradient-to-r from-sky-600 to-primary lg:ps-36 lg:h-screen">
-        <div class="container py-12 lg:pt-24 lg:pb-12">
+        <div class="container py-28 md:pt-44 lg:pb-12">
             <div class="flex flex-wrap justify-end space-y-6">
                 <div class="lg:basis-1/2 self-center space-y-6">
                     <div class="w-full self-center space-y-6 md:w-auto">
-                        <h1 class="block font-bold uppercase text-light text-center text-4xl md:text-6xl lg:text-start">{{ profile.first_name }}  {{ profile.last_name }}</h1>
-                        <h2 class="font-normal text-light text-center lg:text-start md:text-2xl">{{ profile.professional_motto }}</h2>
+                        <h1 v-if="profile.first_name || profile.last_name" class="block font-bold uppercase text-light text-center text-4xl md:text-6xl lg:text-start">
+                            <span v-if="profile.first_name">{{ profile.first_name }}</span> <span v-if="profile.first_name">{{ profile.last_name }}</span>
+                        </h1>
+                        <h2 v-if="profile.professional_motto" class="font-normal text-light text-center lg:text-start md:text-2xl">{{ profile.professional_motto }}</h2>
                     </div>
                     <div class="w-full self-center space-y-6 md:w-auto">
                         <div class="text-center py-3 lg:text-start">
@@ -78,7 +80,6 @@ const fetchProfiles = async () => {
 
         if (response && response.data) {
             profile.value = response.data[0];
-            console.log(profile.value);
         } else {
             throw new Error('Struktur data tidak sesuai');
         }

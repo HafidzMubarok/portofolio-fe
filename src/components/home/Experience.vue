@@ -6,20 +6,29 @@
         </div>
         <div
             class="flex flex-col px-6 pb-8 space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
-            <Card v-for="work in workHistories" :data-collapse-target="'detail-history-card-'+work._id" :controls="'detail-history-card-'+work._id" btnCollapse>
-                <h5 class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
-                <p class="text-base">{{ work.position }}</p>
-                <p class="font-light text-sm">{{ formatDate(work.entry_date) }} - {{ formatDate(work.out_date) }}</p>
-                <p class="mb-4 text-base hidden" :id="'detail-history-card-'+work._id">
+            <Card v-if="workHistories && workHistories.length != 0" v-for="(work, index) in workHistories" 
+            :data-collapse-target="'detail-history-card-'+index" :controls="'detail-history-card-'+index" 
+            :btn-disable="!work.description" btnCollapse>
+                <h5 v-if="work.company" class="mb-2 text-xl font-bold leading-tight">{{ work.company }}</h5>
+                <p v-if="work.position" class="text-base">{{ work.position }}</p>
+                <p v-if="work.entry_date || work.out_date" class="font-light text-sm">
+                    <span v-if="work.entry_date">{{ formatDate(work.entry_date) }}</span> - <span v-if="work.out_date">{{ formatDate(work.out_date) }}</span>
+                    <span v-else>Now</span>
+                </p>
+                <p v-if="work.description" class="mb-4 text-base hidden" :id="'detail-history-card-'+index">
                     {{ work.description }}
                 </p>
             </Card>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-primary text-center opacity-70 font-bold text-2xl lg:text-3xl">Job history not yet added</h1>
+            </div>
         </div>
         <div class="px-10 pb-8 text-center space-y-4">
             <p class="text-primary text-base md:text-lg lg:text-xl">Project</p>
         </div>
         <div class="px-6 md:px-24 lg:px-12">
             <swiper
+                v-if="projects && projects.length != 0"
                 :enabled="false"
                 :direction="'vertical'"
                 :slides-per-view="'auto'"
@@ -46,12 +55,16 @@
                 :modules="modules"
                 class="mySwiper"
                 >
-                <swiper-slide v-if="projects" v-for="project in projects">
-                    <Card :data-collapse-target="'detail-projec-card-'+project._id" :controls="'detail-projec-card-'+project._id" btnCollapse>
+                <swiper-slide v-if="projects" v-for="(project, index) in projects">
+                    <Card :data-collapse-target="'detail-projec-card-'+index" :controls="'detail-projec-card-'+index" 
+                    :btn-disable="!project.description" btnCollapse>
                         <h5 v-if="project.title" class="mb-2 text-xl font-bold leading-tight">{{ project.title }}</h5>
                         <p v-if="project.subtitle" class="text-base">{{ project.subtitle }}</p>
-                        <p v-if="project.start_date && project.end_date" class="font-light text-sm">{{ formatDate(project.start_date) }} - {{ formatDate(project.end_date) }}</p>
-                        <p v-if="project.description" class="mb-4 text-base hidden" :id="'detail-projec-card-'+project._id">
+                        <p v-if="project.start_date || project.end_date" class="font-light text-sm">
+                            <span v-if="project.start_date">{{ formatDate(project.start_date) }}</span> - <span v-if="project.end_date">{{ formatDate(project.end_date) }}</span>
+                            <span v-else>Not finished yet</span>
+                        </p>
+                        <p v-if="project.description" class="mb-4 text-base hidden" :id="'detail-projec-card-'+index">
                             {{ project.description }}
                         </p>
                     </Card>
@@ -67,6 +80,9 @@
                     </Card>
                 </swiper-slide>
             </swiper>
+            <div v-else class="pt-32 pb-60">
+                <h1 class="text-primary text-center opacity-70 font-bold text-2xl lg:text-3xl">Project not yet added</h1>
+            </div>
             <div
                 class="flex flex-col pb-8 md:hidden">
                 <a href="#" class="p-3 font-semibold text-center bg-primary text-light rounded-lg uppercase">
