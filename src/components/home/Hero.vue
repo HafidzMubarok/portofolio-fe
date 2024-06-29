@@ -20,41 +20,41 @@
                 </div>
                 <div class="space-y-6 lg:mx-auto lg:pb-4 lg:basis-1/2">
                     <img src="/img/profile-pic-2.png" alt="Profile Pic" class="max-w-full mx-auto px-16 md:max-w-96 md:ps-0 lg:px-8">
-                    <div class="text-light text-center">
-                        <a v-if="profile.email" href="#"
-                        class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                    <div class="text-light text-center mt-0">
+                        <button v-if="profile.email" @click="copy(profile.email)"
+                        class="p-3 " 
                             @mouseover="email = true"
                             @mouseleave="email = false">
-                            <i class="fa-solid fa-envelope fa-xl"></i>
-                            <span v-show="email == true" class="ms-2">{{ profile.email }}</span>
-                        </a>
-                        <a v-if="profile.whatsapp" href="#"
-                        class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            <i class="fa-solid fa-envelope" :class="{ 'fa-2xl': email, 'fa-xl': !email }"></i>
+                            <!-- <span v-show="email == true" class="ms-2">{{ profile.email }}</span> -->
+                        </button>
+                        <button v-if="profile.whatsapp" @click="copy(profile.whatsapp)"
+                        class="p-3 " 
                             @mouseover="whatsapp = true"
                             @mouseleave="whatsapp = false">
-                            <i class="fa-brands fa-whatsapp fa-xl"></i>
-                            <span v-show="whatsapp" class="ms-2">{{ profile.whatsapp }}</span>
-                        </a>
+                            <i class="fa-brands fa-whatsapp" :class="{ 'fa-2xl': whatsapp, 'fa-xl': !whatsapp }"></i>
+                            <!-- <span v-show="whatsapp" class="ms-2">{{ profile.whatsapp }}</span> -->
+                        </button>
                         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank"
-                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            class="p-3 " 
                             @mouseover="linkedin = true"
                             @mouseleave="linkedin = false">
-                            <i class="fa-brands fa-linkedin fa-xl"></i>
-                            <span v-show="linkedin" class="ms-2">{{ profile.linkedin }}</span>
+                            <i class="fa-brands fa-linkedin" :class="{ 'fa-2xl': linkedin, 'fa-xl': !linkedin }"></i>
+                            <!-- <span v-show="linkedin" class="ms-2">{{ profile.linkedin }}</span> -->
                         </a>
                         <a v-if="profile.github" :href="profile.github" target="_blank"
-                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            class="p-3 " 
                             @mouseover="github = true"
                             @mouseleave="github = false">
-                            <i class="fa-brands fa-github fa-xl"></i>
-                            <span v-show="github" class="ms-2">{{ profile.github }}</span>
+                            <i class="fa-brands fa-github" :class="{ 'fa-2xl': github, 'fa-xl': !github }"></i>
+                            <!-- <span v-show="github" class="ms-2">{{ profile.github }}</span> -->
                         </a>
                         <a v-if="profile.instagram" :href="profile.instagram" target="_blank" 
-                            class="p-3 hover:bg-light hover:text-primary hover:font-semibold hover:rounded-md" 
+                            class="p-3 " 
                             @mouseover="instagram = true"
                             @mouseleave="instagram = false">
-                            <i class="fa-brands fa-instagram fa-xl"></i>
-                            <span v-show="instagram" class="ms-2">{{ profile.instagram }}</span>
+                            <i class="fa-brands fa-instagram" :class="{ 'fa-2xl': instagram, 'fa-xl': !instagram }"></i>
+                            <!-- <span v-show="instagram" class="ms-2">{{ profile.instagram }}</span> -->
                         </a>
                     </div>
                 </div>
@@ -86,6 +86,17 @@ const fetchProfiles = async () => {
     } catch (error) {
         console.error(error)
     }
+}
+
+const copy = (item) => {
+    navigator.clipboard.writeText(item).then(
+        function(){
+            alert("Copied: " + item); // success 
+        })
+        .catch(
+            function() {
+            alert("err"); // error
+    });
 }
 
 onMounted(() => {
