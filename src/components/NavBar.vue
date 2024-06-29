@@ -8,32 +8,9 @@
         </button>
         <div class="hidden md:contents uppercase" id="navbar-default">
           <ul class="flex flex-col w-full py-8 absolute text-center bg-primary md:flex md:flex-row md:justify-center md:align-middle md:sticky md:items-center md:space-x-4 md:pt-1 md:pb-0 md:bg-inherit lg:space-x-8">
-            <!-- <nav-item v-for="item in itemDatas" :active="item.section == props.section.currentSection" :collapse="collapse" :nav-link="item.navLink" :title="item.title"/> -->
-            <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'about-me' == props.section.currentSection }">
-              <a href="#about-me" class="py-6" @click="collapse.collapse()">
-                About Me
-              </a>
-            </li>
-            <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'history' == props.section.currentSection }">
-              <a href="#history" class="py-6" @click="collapse.collapse()">
-                History
-              </a>
-            </li>
-            <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'technology' == props.section.currentSection }">
-              <a href="#technology" class="py-6" @click="collapse.collapse()">
-                Technology
-              </a>
-            </li>
-            <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'education' == props.section.currentSection }">
-              <a href="#education" class="py-6" @click="collapse.collapse()">
-                Education
-              </a>
-            </li>
-            <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'article' == props.section.currentSection }">
-              <a href="#article" class="py-6" @click="collapse.collapse()">
-                Article
-              </a>
-            </li>
+            
+            <nav-item v-for="item in itemDatas" :active="item.section == props.section.currentSection" :collapse="collapse" :nav-link="item.navLink" :title="item.title"/>
+
             <li class="py-6 md:py-0"><a href="#feedback" @click="collapse.collapse()" class="inline-block rounded bg-light px-6 pb-2 pt-2.5 w-max leading-normal
                   text-primary shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:opacity-80 hover:shadow-primary-2
                   focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600
@@ -51,7 +28,7 @@
 import { onMounted, ref } from 'vue'
 import { initFlowbite, Collapse } from 'flowbite'
 
-// import NavItem from '../components/NavItem.vue'
+import NavItem from '../components/NavItem.vue'
 
 const props = defineProps({
   section: Object,
@@ -61,33 +38,33 @@ const dataCollapseTarget = ref('navbar-default');
 const dataCollapseTrigger = ref('menu-btn')
 const isHidden = ref(true);
 const collapse = ref(null);
-// const itemDatas = ref([
-//   {
-//     title: 'About Me',
-//     navLink: '#about-me',
-//     section: 'about-me'
-//   },
-//   {
-//     title: 'History',
-//     navLink: '#history',
-//     section: 'history'
-//   },
-//   {
-//     title: 'Technology',
-//     navLink: '#technology',
-//     section: 'technology'
-//   },
-//   {
-//     title: 'Education',
-//     navLink: '#education',
-//     section: 'education'
-//   },
-//   {
-//     title: 'Article',
-//     navLink: '#article',
-//     section: 'article'
-//   },
-// ]);
+const itemDatas = ref([
+  {
+    title: 'About Me',
+    navLink: '#about-me',
+    section: 'about-me'
+  },
+  {
+    title: 'History',
+    navLink: '#history',
+    section: 'history'
+  },
+  {
+    title: 'Technology',
+    navLink: '#technology',
+    section: 'technology'
+  },
+  {
+    title: 'Education',
+    navLink: '#education',
+    section: 'education'
+  },
+  {
+    title: 'Article',
+    navLink: '#article',
+    section: 'article'
+  },
+]);
 
 const collapseTargetElement = () => {
   const triggerCollapse = document.getElementById(dataCollapseTrigger.value);
