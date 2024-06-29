@@ -1,6 +1,6 @@
 <template>
     <section id="home" class="px-12 bg-gradient-to-r from-sky-600 to-primary lg:ps-36 lg:h-screen">
-        <div class="container py-12 md:pt-44 lg:pb-12">
+        <div class="container py-28 md:pt-44 lg:pb-12">
             <div class="flex flex-wrap justify-end space-y-6">
                 <div class="lg:basis-1/2 self-center space-y-6">
                     <div class="w-full self-center space-y-6 md:w-auto">
