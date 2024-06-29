@@ -8,6 +8,7 @@
         </button>
         <div class="hidden md:contents uppercase" id="navbar-default">
           <ul class="flex flex-col w-full py-8 absolute text-center bg-primary md:flex md:flex-row md:justify-center md:align-middle md:sticky md:items-center md:space-x-4 md:pt-1 md:pb-0 md:bg-inherit lg:space-x-8">
+            <!-- <nav-item v-for="item in itemDatas" :active="item.section == props.section.currentSection" :collapse="collapse" :nav-link="item.navLink" :title="item.title"/> -->
             <li class="py-6 md:pb-4 md:pt-3 md:px-4 lg:px-6 hover:md:border-b-4 hover:md:border-b-secondary" :class="{ 'border-s-4 border-s-secondary md:border-s-0 md:border-b-4 md:border-b-secondary font-bold active': 'about-me' == props.section.currentSection }">
               <a href="#about-me" class="py-6" @click="collapse.collapse()">
                 About Me
@@ -50,6 +51,8 @@
 import { onMounted, ref } from 'vue'
 import { initFlowbite, Collapse } from 'flowbite'
 
+// import NavItem from '../components/NavItem.vue'
+
 const props = defineProps({
   section: Object,
 });
@@ -58,6 +61,33 @@ const dataCollapseTarget = ref('navbar-default');
 const dataCollapseTrigger = ref('menu-btn')
 const isHidden = ref(true);
 const collapse = ref(null);
+// const itemDatas = ref([
+//   {
+//     title: 'About Me',
+//     navLink: '#about-me',
+//     section: 'about-me'
+//   },
+//   {
+//     title: 'History',
+//     navLink: '#history',
+//     section: 'history'
+//   },
+//   {
+//     title: 'Technology',
+//     navLink: '#technology',
+//     section: 'technology'
+//   },
+//   {
+//     title: 'Education',
+//     navLink: '#education',
+//     section: 'education'
+//   },
+//   {
+//     title: 'Article',
+//     navLink: '#article',
+//     section: 'article'
+//   },
+// ]);
 
 const collapseTargetElement = () => {
   const triggerCollapse = document.getElementById(dataCollapseTrigger.value);
