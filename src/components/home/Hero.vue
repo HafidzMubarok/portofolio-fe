@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="space-y-6 lg:mx-auto lg:pb-4 lg:basis-1/2">
-                    <img src="/img/profile-pic-2.png" alt="Profile Pic" class="bg-no-repeat bg-center bg-contain bg-blob rounded-full max-w-full mx-auto px-16 md:max-w-96 md:ps-0 lg:px-8">
+                    <img src="/img/profile-pic-2.png" alt="Profile Pic" class="bg-no-repeat bg-center bg-contain bg-blob rounded-full max-w-full mx-auto px-16 md:max-w-96 md:ps-0 lg:px-8 lg:h-80 lg:w-auto">
                     <div class="text-light text-center mt-0">
                         <!-- Start Email Icon -->
                         <button v-show="profile.email" id="emailBtn" @click="copy(profile.email)" type="button" class="p-3 " 
