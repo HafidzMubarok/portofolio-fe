@@ -4,10 +4,10 @@
             <div class="flex flex-wrap justify-end space-y-6">
                 <div class="lg:basis-1/2 self-center space-y-6">
                     <div class="w-full self-center space-y-6 md:w-auto">
-                        <h1 v-if="profile.first_name || profile.last_name" class="block font-bold uppercase text-light text-center text-4xl md:text-6xl lg:text-start">
-                            <span v-if="profile.first_name">{{ profile.first_name }}</span> <span v-if="profile.first_name">{{ profile.last_name }}</span>
+                        <h1 v-show="profile.first_name || profile.last_name" class="block font-bold uppercase text-light text-center text-4xl md:text-6xl lg:text-start">
+                            <span v-show="profile.first_name">{{ profile.first_name }}</span> <span v-show="profile.first_name">{{ profile.last_name }}</span>
                         </h1>
-                        <h2 v-if="profile.professional_motto" class="font-normal text-light text-center lg:text-start md:text-2xl">{{ profile.professional_motto }}</h2>
+                        <h2 v-show="profile.professional_motto" class="font-normal text-light text-center lg:text-start md:text-2xl">{{ profile.professional_motto }}</h2>
                     </div>
                     <div class="w-full self-center space-y-6 md:w-auto">
                         <div class="text-center py-3 lg:text-start">
@@ -20,15 +20,6 @@
                 </div>
                 <div class="space-y-6 lg:mx-auto lg:pb-4 lg:basis-1/2">
                     <img src="/img/profile-pic-2.png" alt="Profile Pic" class="bg-no-repeat bg-center bg-contain bg-blob max-w-full mx-auto px-16 md:max-w-96 md:ps-0 lg:px-8">
-                    <!-- <div class="relative bg-no-repeat bg-center bg-cover bg-blob">
-                        <span class="absolute -bottom-0 h-96 w-96 -z-10">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#38BDF8" 
-                                    d="M51.5,-51.8C67.1,-48.3,80.4,-32.4,84.8,-14C89.2,4.4,84.7,25.4,74.2,42C63.6,58.6,46.9,70.9,31.9,67.8C16.8,64.8,3.3,46.4,-15.6,40.5C-34.5,34.6,-58.7,41.3,-72.4,33.9C-86.1,26.5,-89.2,5.1,-81.4,-10.1C-73.7,-25.4,-55.1,-34.5,-39.8,-38C-24.4,-41.5,-12.2,-39.3,2.9,-42.8C18,-46.2,35.9,-55.2,51.5,-51.8Z" 
-                                    transform="translate(100 100) scale(1.1)" />
-                            </svg>
-                        </span>
-                    </div> -->
                     <div class="text-light text-center mt-0">
                         <!-- Start Email Icon -->
                         <button v-show="profile.email" id="emailBtn" @click="copy(profile.email)" type="button" class="p-3 " 
@@ -43,7 +34,7 @@
                         <!-- End of Email Icon -->
 
                         <!-- Start of Whatsapp Icon -->
-                        <button v-if="profile.whatsapp" id="waBtn" @click="copy(profile.whatsapp)"
+                        <button v-show="profile.whatsapp" id="waBtn" @click="copy(profile.whatsapp)"
                         class="p-3 " 
                             @mouseover="whatsapp = true, setTooltip(profile.whatsapp, 'emailTooltip', 'waBtn')"
                             @mouseleave="whatsapp = false">
@@ -56,7 +47,7 @@
                         <!-- End of Whatsapp Icon -->
 
                         <!-- Start of linkedin Icon -->
-                        <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank"
+                        <a v-show="profile.linkedin" :href="profile.linkedin" target="_blank"
                             class="p-3 " id="linkedinBtn"
                             @mouseover="linkedin = true; setTooltip(profile.linkedin, 'linkedinTooltip', 'linkedinBtn')"
                             @mouseleave="linkedin = false">
@@ -69,7 +60,7 @@
                         <!-- End of linkedin Icon -->
 
                         <!-- Start of github Icon -->
-                        <a v-if="profile.github" :href="profile.github" target="_blank"
+                        <a v-show="profile.github" :href="profile.github" target="_blank"
                             class="p-3 " id="githubBtn"
                             @mouseover="github = true; setTooltip(profile.github, 'githubTooltip', 'githubBtn')"
                             @mouseleave="github = false">
@@ -82,7 +73,7 @@
                         <!-- End of github Icon -->
 
                         <!-- Start of instagram Icon -->
-                        <a v-if="profile.instagram" :href="profile.instagram" target="_blank" 
+                        <a v-show="profile.instagram" :href="profile.instagram" target="_blank" 
                             class="p-3 " id="instagramBtn"
                             @mouseover="instagram = true; setTooltip(profile.instagram, 'instagramTooltip', 'instagramBtn')"
                             @mouseleave="instagram = false">
