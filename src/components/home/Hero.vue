@@ -25,7 +25,7 @@
                         <button v-show="profile.email" id="emailBtn" @click="copy(profile.email)" type="button" class="p-3 " 
                             @mouseover="email = true; setTooltip(profile.email, 'emailTooltip', 'emailBtn')"
                             @mouseleave="email = false">
-                            <i class="fa-solid fa-envelope" :class="{ 'fa-2xl': email, 'fa-xl': !email }"></i>
+                            <i class="fa-solid hover:-translate-y-1 transition ease-out delay-150 duration-200" :class="{ 'fa-2xl fa-envelope-open': email, 'fa-xl fa-envelope': !email }"></i>
                         </button>
                         <div id="emailTooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                             {{ tooltipMessage }}
@@ -38,7 +38,7 @@
                         class="p-3 " 
                             @mouseover="whatsapp = true, setTooltip(profile.whatsapp, 'emailTooltip', 'waBtn')"
                             @mouseleave="whatsapp = false">
-                            <i class="fa-brands fa-whatsapp" :class="{ 'fa-2xl': whatsapp, 'fa-xl': !whatsapp }"></i>
+                            <i class="fa-brands fa-whatsapp transition ease-out delay-150 duration-200 hover:-translate-y-1" :class="{ 'fa-2xl': whatsapp, 'fa-xl': !whatsapp }"></i>
                         </button>
                         <div id="waTooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                             {{ tooltipMessage }}
@@ -51,7 +51,7 @@
                             class="p-3 " id="linkedinBtn"
                             @mouseover="linkedin = true; setTooltip(profile.linkedin, 'linkedinTooltip', 'linkedinBtn')"
                             @mouseleave="linkedin = false">
-                            <i class="fa-brands fa-linkedin" :class="{ 'fa-2xl': linkedin, 'fa-xl': !linkedin }"></i>
+                            <i class="fa-brands fa-linkedin transition ease-out delay-150 duration-200 hover:-translate-y-1" :class="{ 'fa-2xl': linkedin, 'fa-xl': !linkedin }"></i>
                         </a>
                         <div id="linkedinTooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                             {{ tooltipMessage }}
@@ -64,7 +64,7 @@
                             class="p-3 " id="githubBtn"
                             @mouseover="github = true; setTooltip(profile.github, 'githubTooltip', 'githubBtn')"
                             @mouseleave="github = false">
-                            <i class="fa-brands fa-github" :class="{ 'fa-2xl': github, 'fa-xl': !github }"></i>
+                            <i class="fa-brands fa-github transition ease-out delay-150 duration-200 hover:-translate-y-1" :class="{ 'fa-2xl': github, 'fa-xl': !github }"></i>
                         </a>
                         <div id="githubTooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                             {{ tooltipMessage }}
@@ -77,7 +77,7 @@
                             class="p-3 " id="instagramBtn"
                             @mouseover="instagram = true; setTooltip(profile.instagram, 'instagramTooltip', 'instagramBtn')"
                             @mouseleave="instagram = false">
-                            <i class="fa-brands fa-instagram" :class="{ 'fa-2xl': instagram, 'fa-xl': !instagram }"></i>
+                            <i class="fa-brands fa-instagram transition ease-out delay-150 duration-200 hover:-translate-y-1" :class="{ 'fa-2xl': instagram, 'fa-xl': !instagram }"></i>
                         </a>
                         <div id="instagramTooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light bg-primary rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                             {{ tooltipMessage }}
