@@ -7,8 +7,8 @@
             <Card v-if="educations.length != 0" v-for="(education, index) in educations" 
             class="md:max-w-full lg:max-w-full" :data-collapse-target="'detail-education-card-'+index" :controls="'detail-education-card-'+index" 
             :btn-disable="!education.description" btnCollapse>
-                <img src="/img/education-logo.svg" alt="education logo" class="max-w-20 pb-4 w-20 h-auto">
-                <h5 v-if="education.institution" class="text-primary text-xl font-bold leading-tight mb-5">{{ education.institution }}</h5>
+                <img src="/img/education-logo.svg" alt="education logo" class="me-auto size-36">
+                <h5 v-if="education.institution" class="text-primary text-xl font-bold leading-tight pt-4 mb-5">{{ education.institution }}</h5>
                 <p v-if="education.qualification" class="text-base">{{ education.qualification }}</p>
                 <p v-if="education.start_date || education.end_date" class="font-light text-sm">
                     <span v-if="education.start_date">{{ formatDate(education.start_date) }}</span> - <span v-if="education.end_date">{{ formatDate(education.end_date) }}</span><span v-else>Now</span>
