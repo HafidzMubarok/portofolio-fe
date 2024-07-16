@@ -30,6 +30,12 @@ import Card from "../Card.vue";
 import { onMounted, ref } from "vue";
 import axios from 'axios';
 
+import { defineAsyncComponent } from "vue";
+
+// const Card = defineAsyncComponent(() =>
+//     import("../Card.vue")
+// );
+
 export default {
     components: {
         Card,

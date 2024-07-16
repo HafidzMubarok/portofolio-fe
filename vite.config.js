@@ -5,7 +5,9 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+// import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+import viteCompression from 'vite-plugin-compression';
+import { brotliCompress } from 'node:zlib'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,13 +15,18 @@ export default defineConfig({
     vue(),
     vueJsx(),
     VueDevTools(),
-    chunkSplitPlugin({
-      strategy: 'unbundle',
-      customSplitting: {
-        // All files in `src/container` will be merged together in `container` chunk
-        'container': [/src\/container/]
+    viteCompression({
+      compressionOptions: {
+        algorithm: brotliCompress
       }
     }),
+    // chunkSplitPlugin({
+    //   strategy: 'unbundle',
+    //   customSplitting: {
+    //     // All files in `src/container` will be merged together in `container` chunk
+    //     'container': [/src\/container/]
+    //   }
+    // }),
     ViteImageOptimizer({
       jpg: {
         quality: 80,

@@ -68,6 +68,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import { defineAsyncComponent } from "vue";
+
+// const Card = defineAsyncComponent(() =>
+//     import("../Card.vue")
+// );
+
 export default {
     components: {
         Card,
@@ -76,6 +82,7 @@ export default {
     },
     setup() {
         const articles = ref([]);
+
 
         const fetchArticles = async () => {
             try {

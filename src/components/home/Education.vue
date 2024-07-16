@@ -27,8 +27,13 @@
 <script setup>
 import Card from "../Card.vue";
 import { ref, onMounted } from "vue";
+import { defineAsyncComponent } from "vue";
 
 import axios from 'axios';
+
+// const Card = defineAsyncComponent(() =>
+//     import("../Card.vue")
+// );
 
 const educations = ref([]);
 
