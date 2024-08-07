@@ -26,30 +26,29 @@
         <div class="px-10 pb-8 text-center space-y-4">
             <p class="text-primary text-base md:text-lg lg:text-xl">Project</p>
         </div>
-        <div class="px-6 md:px-24 lg:px-12">
+        <div class="px-6 mb-6 md:px-24 lg:px-12">
             <swiper
                 v-if="projects && projects.length != 0"
                 :enabled="false"
                 :direction="'vertical'"
                 :slides-per-view="'auto'"
-                :space-between="16"
+                :space-between="32"
                 :pagination="{
                     clickable: true,
                 }"
                 :navigation="true"
+                :loop="true"
                 :breakpoints="{
                     '768': {
                         slidesPerView: 'auto',
                         spaceBetween: 20,
-                        enabled: true,
-                        direction: 'horizontal',
+                        loop: true,
                     },
                     '976': {
                         slidesPerView: projectView,
                         spaceBetween: 32,
                         centeredSlides: true,
-                        enabled: true,
-                        direction: 'horizontal',
+                        loop: false,
                     },
                 }"
                 :modules="modules"
@@ -88,7 +87,7 @@
                 <a href="#" class="p-3 font-semibold text-center bg-primary text-light rounded-lg uppercase">
                     Show More Project <i class="fa-solid fa-chevron-down"></i>
                 </a>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
