@@ -32,9 +32,24 @@ export default {
     setup() {
         const skills = ref([]);
 
+        // const fetchSkills = async () => {
+        //     try {
+        //         const response = await axios.get('http://localhost:3000/api/skill/all');
+
+        //         if (response && response.data) {
+        //             skills.value = response.data;
+        //             console.log(skills.value);
+        //         } else {
+        //             throw new Error('Struktur data tidak sesuai');
+        //         }
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // }
+        
         const fetchSkills = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/skill/all');
+                const response = await axios.get('https://fathul-portofolio-be.fly.dev/api/skill/all');
                 
                 if (response && response.data) {
                     skills.value = response.data;

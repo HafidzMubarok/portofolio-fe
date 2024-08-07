@@ -99,9 +99,37 @@ export default {
         const workHistories = ref([]);
         const projects = ref([]);
 
+        // const fetchWorkHistories = async () => {
+        //     try {
+        //         const response = await axios.get('http://localhost:3000/api/works');
+
+        //         if (response && response.data) {
+        //             workHistories.value = response.data
+        //         } else {
+        //             throw new Error('Struktur data tidak sesuai');
+        //         }
+        //     } catch (error) {
+        //         console.error(error)
+        //     }
+        // }
+
+        // const fetchProjects = async () => {
+        //     try {
+        //         const response = await axios.get('http://localhost:3000/api/projects');
+
+        //         if (response && response.data) {
+        //             projects.value = response.data
+        //         } else {
+        //             throw new Error('Struktur data tidak sesuai');
+        //         }
+        //     } catch (error) {
+        //         console.error(error)
+        //     }
+        // }
+
         const fetchWorkHistories = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/works');
+                const response = await axios.get('https://fathul-portofolio-be.fly.dev/api/works');
 
                 if (response && response.data) {
                     workHistories.value = response.data
@@ -115,7 +143,7 @@ export default {
 
         const fetchProjects = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/projects');
+                const response = await axios.get('https://fathul-portofolio-be.fly.dev/api/projects');
 
                 if (response && response.data) {
                     projects.value = response.data

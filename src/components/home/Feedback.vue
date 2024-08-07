@@ -52,10 +52,42 @@ const loading = ref(false);
 const success = ref(false);
 const failed = ref(false);
 
+// const handleSubmit = async () => {
+//     try {
+//         loading.value = true;
+//         const response = await axios.post('http://localhost:3000/api/feedback', {
+//             firstName: firstName.value,
+//             lastName: lastName.value,
+//             email: email.value,
+//             feedback: feedback.value,
+//         });
+
+//         if (response.status == 200) {
+//             console.log(response);
+//             loading.value = false;
+//             success.value = true;
+//             setTimeout(() => {
+//                 success.value = false;
+//                 firstName.value = '';
+//                 lastName.value = '';
+//                 email.value = '';
+//                 feedback.value = '';
+//                 // location.reload();
+//             }, 1000); // Success animation
+
+
+//         } else {
+//             console.log(response);
+//         }
+//     } catch (error) {
+//         throw new Error('Struktur data tidak sesuai');
+//     }
+// }
+
 const handleSubmit = async () => {
     try {
         loading.value = true;
-        const response = await axios.post('http://localhost:3000/api/feedback', {
+        const response = await axios.post('https://fathul-portofolio-be.fly.dev/api/feedback', {
             firstName: firstName.value,
             lastName: lastName.value,
             email: email.value,

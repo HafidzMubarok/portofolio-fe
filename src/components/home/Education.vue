@@ -29,9 +29,24 @@ import axios from 'axios';
 
 const educations = ref([]);
 
+// const fetchEducations = async () => {
+//     try {
+//         const response = await axios.get('http://localhost:3000/api/education/all');
+
+//         if (response && response.data) {
+//             educations.value = response.data;
+//             console.log(educations.value);
+//         } else {
+//             throw new Error('Struktur data tidak sesuai');
+//         }
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
+
 const fetchEducations = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/education/all');
+        const response = await axios.get('https://fathul-portofolio-be.fly.dev/api/education/all');
 
         if (response && response.data) {
             educations.value = response.data;
