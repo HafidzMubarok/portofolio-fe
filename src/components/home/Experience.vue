@@ -105,6 +105,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { onMounted, ref } from 'vue';
 
+import { defineAsyncComponent } from "vue";
+
+// const Card = defineAsyncComponent(() =>
+//     import("../Card.vue")
+// );
+
 export default {
     components: {
         Card,

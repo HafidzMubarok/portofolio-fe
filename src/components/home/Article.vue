@@ -34,8 +34,8 @@
             >
                 <swiper-slide v-if="articles" v-for="article in articles" :key="article._id" class="py-2 px-2">
                     <Card class="drop-shadow-lg" btn-text="Read More">
-                        <img src="/img/education-logo.svg" alt="education logo" class="max-h-40 w-screen pb-4">
-                        <p v-if="article.created_at" class="text-base text-end">{{ formatDate(article.created_at) }}</p>
+                        <img src="/img/education-logo.svg" alt="education logo" class="mx-auto size-36">
+                        <p v-if="article.created_at" class="text-base text-end pt-4">{{ formatDate(article.created_at) }}</p>
                         <h5 v-if="article.title" class="text-primary text-xl font-bold leading-tight mb-5">{{ article.title }}</h5>
                         <p v-if="article.content" class="mb-4 text-base truncate">
                             {{ article.content }}
@@ -68,6 +68,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import { defineAsyncComponent } from "vue";
+
+// const Card = defineAsyncComponent(() =>
+//     import("../Card.vue")
+// );
+
 export default {
     components: {
         Card,
@@ -76,6 +82,7 @@ export default {
     },
     setup() {
         const articles = ref([]);
+
 
         const fetchArticles = async () => {
             try {
